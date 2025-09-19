@@ -1,0 +1,9 @@
+{
+    "target": "esp32s3",
+    "builds": [
+        {
+            "name": "viewe-uedx46460-1.75",
+            "sdkconfig_append": []
+        }
+    ]
+}

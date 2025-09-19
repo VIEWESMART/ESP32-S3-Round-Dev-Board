@@ -1,0 +1,15 @@
+CMake Error at D:/Espressif/frameworks/esp-idf-v5.3.2/tools/cmake/build.cmake:552 (message):
+  ERROR: The "override_path" field in the manifest file
+  "D:\esp32s3\components\display\lcd\esp_lcd_st77903_qspi\idf_component.yml"
+  does not point to a directory.  You can safely remove this field from the
+  manifest if this project is an example copied from a component repository.
+  The dependency will be downloaded from the ESP component registry.
+  Documentation:
+  https://docs.espressif.com/projects/idf-component-manager/en/latest/reference/manifest_file.html#override-path
+
+
+Call Stack (most recent call first):
+  D:/Espressif/frameworks/esp-idf-v5.3.2/tools/cmake/project.cmake:710 (idf_build_process)
+  CMakeLists.txt:7 (project)
+
+
