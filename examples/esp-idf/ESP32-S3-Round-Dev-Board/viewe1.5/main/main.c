@@ -342,19 +342,6 @@ static void lvgl_port_task(void *arg)
     gpio_set_level(PIN_NUM_BK_LIGHT, LCD_BK_LIGHT_ON_LEVEL);
 #endif
     /* 初始化 I2C */
-    gpio_config_t touch_rst_config = {
-        .mode = GPIO_MODE_OUTPUT,
-        .pin_bit_mask = 1ULL << TOUCH_I2C_RST};
-    ESP_ERROR_CHECK(gpio_config(&touch_rst_config));
-    gpio_config_t touch_int_config = {
-        .mode = GPIO_MODE_INPUT_OUTPUT,
-        .pin_bit_mask = 1ULL << TOUCH_GPIO_INT};
-    ESP_ERROR_CHECK(gpio_config(&touch_int_config));
-    gpio_set_level(TOUCH_GPIO_INT, 0);
-    gpio_set_level(TOUCH_I2C_RST, 0);
-    vTaskDelay(200);
-    gpio_set_level(TOUCH_I2C_RST, 1);
-    vTaskDelay(200);
     esp_lcd_panel_io_handle_t tp_io_handle = NULL;
     esp_lcd_touch_handle_t tp = NULL;
 
@@ -400,8 +387,8 @@ static void lvgl_port_task(void *arg)
     esp_lcd_touch_config_t tp_cfg = {
         .x_max = LCD_H_RES,
         .y_max = LCD_V_RES,
-        .rst_gpio_num = -1,
-        .int_gpio_num = -1,
+        .rst_gpio_num = TOUCH_I2C_RST,
+        .int_gpio_num = TOUCH_GPIO_INT,
         .levels = {
             .reset = 0,
             .interrupt = 0,
